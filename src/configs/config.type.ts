@@ -7,6 +7,14 @@ export type AppConfig = {
   apiPrefix: string;
 };
 
+export type DatabaseConfig = {
+  url: string;
+  type: string;
+  name: string;
+  synchronize: boolean;
+};
+
 export type AllConfigType = {
   app: AppConfig;
+  database: DatabaseConfig;
 };
