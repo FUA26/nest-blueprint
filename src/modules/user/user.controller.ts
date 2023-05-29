@@ -10,6 +10,7 @@ import {
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { UserNotFoundException } from './exception/UserNotFoundException.exception';
 
 @Controller('user')
 export class UserController {
@@ -26,17 +27,26 @@ export class UserController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    const user = await this.userService.findOne(+id);
+    if (!user) throw new UserNotFoundException(id);
+
+    return user;
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+    const user = await this.userService.findOne(+id);
+    if (!user) throw new UserNotFoundException(id);
+
     return this.userService.update(+id, updateUserDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
+    const user = await this.userService.findOne(+id);
+    if (!user) throw new UserNotFoundException(id);
+
     return this.userService.remove(+id);
   }
 }

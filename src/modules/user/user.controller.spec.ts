@@ -53,11 +53,13 @@ describe('UserController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UserController],
-      providers: [UserService],
-    })
-      .overrideProvider(UserService)
-      .useValue(mockUserService)
-      .compile();
+      providers: [
+        {
+          provide: UserService,
+          useValue: mockUserService,
+        },
+      ],
+    }).compile();
 
     controller = module.get<UserController>(UserController);
   });
@@ -102,10 +104,10 @@ describe('UserController', () => {
   });
 
   describe('FindOne', () => {
-    it('should return a User by ID', () => {
+    it('should return a User by ID', async () => {
       const userId = '1';
-      expect(controller.findOne(userId)).toEqual({
-        id: 1,
+      expect(await controller.findOne(userId)).toEqual({
+        id: +userId,
         firstName: 'John',
         lastName: 'Doe',
         isActive: true,
@@ -115,16 +117,16 @@ describe('UserController', () => {
   });
 
   describe('Update', () => {
-    it('should update a User', () => {
+    it('should update a User', async () => {
       const userId = '1';
       expect(
-        controller.update(userId, {
+        await controller.update(userId, {
           firstName: 'Updated',
           lastName: 'User',
           isActive: false,
         }),
       ).toEqual({
-        id: 1,
+        id: +userId,
         firstName: 'Updated',
         lastName: 'User',
         isActive: false,
@@ -138,10 +140,10 @@ describe('UserController', () => {
   });
 
   describe('Remove', () => {
-    it('should remove a User', () => {
+    it('should remove a User', async () => {
       const userId = '1';
-      expect(controller.remove(userId)).toEqual({
-        id: 1,
+      expect(await controller.remove(userId)).toEqual({
+        id: +userId,
         deleted: true,
       });
       expect(mockUserService.remove).toHaveBeenCalledWith(+userId);
