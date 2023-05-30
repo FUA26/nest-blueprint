@@ -1,0 +1,3 @@
+class ResponseDto {
+  accessToken: string;
+}

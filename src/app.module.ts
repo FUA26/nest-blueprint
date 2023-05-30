@@ -6,6 +6,8 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 import appConfig from './configs/app.config';
 import databaseConfig from './configs/database.config';
 import { TypeOrmConfigService } from './database/type-orm-config';
+import { AuthModule } from './modules/auth/auth.module';
+import authConfig from './configs/auth.config';
 
 @Module({
   imports: [
@@ -17,10 +19,11 @@ import { TypeOrmConfigService } from './database/type-orm-config';
     }),
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [appConfig, databaseConfig],
+      load: [appConfig, databaseConfig, authConfig],
       envFilePath: ['.env'],
     }),
     UserModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

@@ -39,12 +39,18 @@ describe('UserService', () => {
         firstName: 'John',
         lastName: 'Doe',
         isActive: true,
+        email: 'upchh@example.com',
+        password: '123456',
+        token: '123456',
       };
       const newUser = {
         id: 1,
         firstName: 'John',
         lastName: 'Doe',
         isActive: true,
+        email: 'upchh@example.com',
+        hashPassword: '123456',
+        hashToken: '123456',
       };
 
       jest.spyOn(repository, 'create').mockReturnValue(newUser);
@@ -66,12 +72,18 @@ describe('UserService', () => {
           firstName: 'John',
           lastName: 'Doe',
           isActive: true,
+          email: 'upchh@example.com',
+          hashPassword: '123456',
+          hashToken: '123456',
         },
         {
           id: 2,
           firstName: 'Jane',
           lastName: 'Smith',
           isActive: true,
+          email: 'upchh@example.com',
+          hashPassword: '123456',
+          hashToken: '123456',
         },
       ];
 
@@ -95,12 +107,18 @@ describe('UserService', () => {
         firstName: 'John',
         lastName: 'Doe',
         isActive: true,
+        email: 'upchh@example.com',
+        hashPassword: '123456',
+        hashToken: '123456',
       };
       const updatedUser = {
         id: 1,
         firstName: 'Updated',
         lastName: 'Doe',
         isActive: true,
+        email: 'upchh@example.com',
+        hashPassword: '123456',
+        hashToken: '123456',
       };
 
       jest.spyOn(repository, 'findOne').mockResolvedValue(existingUser);
@@ -127,6 +145,9 @@ describe('UserService', () => {
         firstName: 'John',
         lastName: 'Doe',
         isActive: true,
+        email: 'upchh@example.com',
+        hashPassword: '123456',
+        hashToken: '123456',
       };
 
       jest.spyOn(repository, 'findOne').mockResolvedValue(user);
@@ -151,6 +172,9 @@ describe('UserService', () => {
         firstName: 'John',
         lastName: 'Doe',
         isActive: true,
+        email: 'upchh@example.com',
+        hashPassword: '123456',
+        hashToken: '123456',
       };
 
       jest.spyOn(repository, 'findOne').mockResolvedValue(user);
