@@ -1,6 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
+import { AuthGuard } from '@nestjs/passport';
+import { PassportModule } from '@nestjs/passport';
 
 describe('UserController', () => {
   let controller: UserController;
@@ -59,6 +61,7 @@ describe('UserController', () => {
           useValue: mockUserService,
         },
       ],
+      imports: [PassportModule.register({ defaultStrategy: 'jwt-auth-token' })],
     }).compile();
 
     controller = module.get<UserController>(UserController);

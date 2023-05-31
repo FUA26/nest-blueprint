@@ -15,11 +15,11 @@ export class User {
   @Column()
   email: string;
 
-  @Column()
+  @Column({ nullable: true })
   @Exclude({ toPlainOnly: true })
   hashPassword: string;
 
-  @Column()
+  @Column({ nullable: true })
   @Exclude({ toPlainOnly: true })
   hashToken: string;
 

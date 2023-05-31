@@ -1,10 +1,4 @@
-import {
-  ClassSerializerInterceptor,
-  HttpException,
-  HttpStatus,
-  Injectable,
-  UseInterceptors,
-} from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
@@ -20,7 +14,6 @@ export class AuthService {
     private usersRepository: Repository<User>,
     private jwtService: JwtService,
   ) {}
-  @UseInterceptors(ClassSerializerInterceptor)
   async validateUser(email: string, password: string): Promise<User> {
     const getUser = await this.usersRepository.findOne({
       where: { email },
@@ -47,7 +40,6 @@ export class AuthService {
 
   async validateLogin(loginDto: AuthEmailLoginDto): Promise<any> {
     const user = await this.validateUser(loginDto.email, loginDto.password);
-
     const payload = {
       sub: user.id,
       firdtName: user.firstName,

@@ -10,15 +10,20 @@ import {
   HttpStatus,
   ClassSerializerInterceptor,
   UseInterceptors,
+  UseGuards,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserNotFoundException } from './exception/UserNotFoundException.exception';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/utils/guard/jwt-auth.guard';
 
 @Controller('user')
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 @ApiTags('Users')
+@UseInterceptors(ClassSerializerInterceptor)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 

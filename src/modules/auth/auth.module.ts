@@ -6,10 +6,13 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../user/entities/user.entity';
+import { LocalStrategy } from './strategies/local-strategy';
+import { JwtAuthStrategy } from './strategies/jwt-auth-token.strategy';
+import { JwtRefreshStrategy } from './strategies/jwt-refresh-token.strategy';
 
 @Module({
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, LocalStrategy, JwtAuthStrategy, JwtRefreshStrategy],
   imports: [
     PassportModule,
     JwtModule.registerAsync({
