@@ -4,8 +4,6 @@
 
 # NestJS REST API 🇮🇩 by FUA
 
-![github action status](https://github.com/brocoders/nestjs-boilerplate/actions/workflows/docker-e2e.yml/badge.svg)
-
 ## Description
 
 is a robust foundation for building modern backend applications following a Node.js-based architecture. Nest.js is a TypeScript-based framework that simplifies application development by providing an organized and clean structure.
