@@ -21,9 +21,9 @@ This blueprint provides a ready-to-use and well-designed framework to facilitate
 - [x] Units tests.
 - [x] E2E tests (BugFixing).
 - [x] Docker.
-- [] Mailing ([nodemailer](https://www.npmjs.com/package/nodemailer), [@nestjs-modules/mailer](https://www.npmjs.com/package/@nestjs-modules/mailer)).
-- [] I18N ([nestjs-i18n](https://www.npmjs.com/package/nestjs-i18n)).
-- [] File uploads. Support local and Amazon S3 drivers.
+- [ ] Mailing ([nodemailer](https://www.npmjs.com/package/nodemailer), [@nestjs-modules/mailer](https://www.npmjs.com/package/@nestjs-modules/mailer)).
+- [ ] I18N ([nestjs-i18n](https://www.npmjs.com/package/nestjs-i18n)).
+- [ ] File uploads. Support local and Amazon S3 drivers.
 
 ## Quick run
 
