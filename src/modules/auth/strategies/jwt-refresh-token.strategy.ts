@@ -38,8 +38,6 @@ export class JwtRefreshStrategy extends PassportStrategy(
       throw new BadRequestException('invalid refresh token');
     }
 
-    const user = await this.authService.validateRefreshToken(payload.email);
-
-    return user;
+    return payload;
   }
 }

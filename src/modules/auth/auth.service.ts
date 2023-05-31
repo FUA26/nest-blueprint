@@ -62,23 +62,24 @@ export class AuthService {
     //   },
     // });
 
-    // if (!user) {
-    //   throw new HttpException('message', HttpStatus.BAD_REQUEST, {
-    //     cause: new Error('Token Expired'),
-    //   });
-    // }
+    const user = await this.usersRepository.findOne({
+      where: { email },
+    });
 
-    // const payload = {
-    //   sub: user.id,
-    //   name: user.name,
-    //   email: user.email,
-    // };
+    if (!user) {
+      throw new HttpException('message', HttpStatus.BAD_REQUEST, {
+        cause: new Error('Token Expired'),
+      });
+    }
 
-    // const tokens = await this.getJwtAccessToken(payload);
-    const tokens = {
-      accessToken: 'tokens.accessToken',
-      refreshToken: 'tokens.refreshToken',
+    const payload = {
+      sub: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
     };
+
+    const tokens = await this.getJwtToken(payload);
     return {
       accessToken: tokens.accessToken,
       refreshToken: tokens.refreshToken,
