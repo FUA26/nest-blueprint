@@ -6,11 +6,15 @@
 
 ## Description
 
-is a robust foundation for building modern backend applications following a Node.js-based architecture. Nest.js is a TypeScript-based framework that simplifies application development by providing an organized and clean structure.
+The Blueprint Project Nest.js REST API provides a robust foundation for building modern backend applications following a Node.js-based architecture. Nest.js is a TypeScript-based framework that simplifies application development by providing an organized and clean structure.
 
-This blueprint provides a ready-to-use and well-designed framework to facilitate the development of resilient and scalable REST APIs. By utilizing this blueprint, developers can focus on their core business logic without spending excessive time on setting up the project's basic structure.
+This blueprint offers a ready-to-use and well-designed framework to facilitate the development of resilient and scalable REST APIs. However, it's important to note that this blueprint requires customization to be production-ready.
 
-[Full documentation here](https://github.com/brocoders/nestjs-boilerplate/blob/main/docs/readme.md)
+In implementing this blueprint, some functions may need to be adjusted according to the specific needs of your project. Additionally, it's crucial to pay special attention to the security of this project. While the blueprint provides a solid starting point, further review and adjustments are necessary to ensure compliance with best practices and the required security standards.
+
+If you need assistance in customizing this blueprint for a production environment and ensuring its implementation aligns with best practices, please feel free to contact me. I would be happy to help you optimize the implementation of this blueprint and secure your application.
+
+📚 Full Documentation is coming soon! 🚀
 
 ## Features
 
